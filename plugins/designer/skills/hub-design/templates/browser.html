@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- Template: a browser window. The page goes inside .page; the window width is --win-w (1280–1440). -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browser</title>
+<style>
+  :root { --win-w: 1280px; --chrome: #f1f1f3; --line: #d9d9de; --ink: #1b1b1f; }
+  body { margin: 0; padding: 48px; background: #e4e4e8; font: 16px/1.4 system-ui, sans-serif; color: var(--ink); }
+  .window { width: min(var(--win-w), 100%); margin: 0 auto; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 24px 60px rgb(0 0 0 / .14); }
+  .bar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px; height: 44px; padding: 0 14px; background: var(--chrome); border-bottom: 1px solid var(--line); }
+  .dots { display: flex; gap: 8px; }
+  .dots i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; }
+  .dots i:nth-child(2) { background: #febc2e; }
+  .dots i:nth-child(3) { background: #28c840; }
+  .url { justify-self: center; width: min(560px, 100%); height: 28px; padding: 0 12px; display: flex; align-items: center; border-radius: 8px; background: #fff; box-shadow: 0 0 0 1px var(--line); font-size: 13px; color: #5a5a62; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .page { min-height: 640px; }
+</style>
+</head>
+<body>
+  <div class="window" id="window-1" data-screen-label="01 Home">
+    <div class="bar">
+      <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="url">example.com</div>
+      <span></span>
+    </div>
+    <main class="page" id="page-1">
+      <!-- page -->
+    </main>
+  </div>
+</body>
+</html>

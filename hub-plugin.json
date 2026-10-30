@@ -1,0 +1,70 @@
+{
+  "name": "designer",
+  "kind": "specialist",
+  "version": "0.2.47",
+  "hub": "^1",
+  "icon": "🎨",
+  "description": "Designer: aesthetic, modern interface design: mockups in Figma and code; works on the Hub Design canvas",
+  "why": "A ready-made designer instead of building your own: method (2–3 directions, one token system, a check before showing), decision rules, the Hub Design skill, check cases",
+  "agent": {
+    "cwd": "~/design",
+    "tools": {
+      "need": [],
+      "optional": [
+        {
+          "id": "figma",
+          "why": "mockups in Figma: read and write"
+        },
+        {
+          "id": "pencil",
+          "why": "mockups in Pencil (.pen)"
+        },
+        {
+          "id": "frontend-design",
+          "why": "interface layout in code"
+        },
+        {
+          "id": "playwright",
+          "why": "screenshots and checks in a browser"
+        },
+        {
+          "id": "impeccable",
+          "why": "critique and polish of a finished screen"
+        },
+        {
+          "id": "better-layout",
+          "why": "grid and composition"
+        },
+        {
+          "id": "better-typography",
+          "why": "fonts and typography"
+        },
+        {
+          "id": "better-colors",
+          "why": "palette and contrast"
+        },
+        {
+          "id": "ui-polish",
+          "why": "narrow edits: spacing, alignment"
+        },
+        {
+          "id": "motion",
+          "why": "interface animation"
+        },
+        {
+          "id": "design-tokens",
+          "why": "design system tokens"
+        },
+        {
+          "id": "gpt-image",
+          "why": "generating pictures for mockups"
+        },
+        {
+          "id": "parallel-web-search",
+          "why": "searching for references"
+        }
+      ]
+    },
+    "cases": "evals/cases.md"
+  }
+}

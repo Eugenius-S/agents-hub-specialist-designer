@@ -1,0 +1,14 @@
+{
+  "name": "hub-specialist-designer",
+  "owner": {
+    "name": "agents-hub"
+  },
+  "plugins": [
+    {
+      "name": "designer",
+      "source": "./plugins/designer",
+      "description": "Hub designer skills: work on the Hub Design canvas.",
+      "version": "0.2.47"
+    }
+  ]
+}

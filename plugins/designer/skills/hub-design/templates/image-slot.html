@@ -1,0 +1,23 @@
+<!doctype html>
+<!-- Template: a place for an image. With no image yet the slot caption shows; once the file assets/<id>.<ext> appears, the slot shows it.
+     The slot size is set by the grid and aspect-ratio, not by the image: the mockup does not jump when the image arrives. -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image slot</title>
+<style>
+  body { max-width: 720px; margin: 48px auto; font: 16px/1.4 system-ui, sans-serif; }
+  .slot { position: relative; margin: 0; aspect-ratio: var(--ratio, 16 / 9); border-radius: 12px; overflow: hidden; background: repeating-linear-gradient(135deg, #f0f0f3 0 12px, #e7e7ec 12px 24px); }
+  .slot img, .slot video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .slot figcaption { position: absolute; inset: auto 12px 12px 12px; padding: 8px 10px; border-radius: 8px; background: rgb(255 255 255 / .92); color: #333; font: 13px/1.35 ui-monospace, monospace; }
+  .slot.filled figcaption { display: none; }
+</style>
+</head>
+<body>
+  <figure class="slot" id="hero-photo" style="--ratio: 4 / 3">
+    <img src="assets/hero-photo.jpg" alt="[what is in the photo]" onload="this.parentNode.classList.add(\'filled\')" onerror="this.remove()">
+    <figcaption>hero-photo · photo: [what is in the frame] · 1600×1200 jpg · assets/hero-photo.jpg</figcaption>
+  </figure>
+</body>
+</html>

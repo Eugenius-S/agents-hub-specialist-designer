@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- Template: 1920×1080 slides in one file. A slide is section.slide with data-screen-label "NN Name".
+     Paging: arrows, space, a click on the edge; the slide number is in the address (#3), so the canvas and a link open the right one. -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presentation</title>
+<style>
+  :root { --bg: #0f0f12; --ink: #f4f4f6; --muted: #a9a9b2; --accent: #4f7cff; }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  .stage { position: fixed; inset: 0; }
+  .deck { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform: translate(-50%, -50%); }
+  .slide { position: absolute; inset: 0; display: none; box-sizing: border-box; padding: 120px 160px; background: var(--bg); color: var(--ink); font: 32px/1.35 system-ui, sans-serif; }
+  .slide.on { display: flex; flex-direction: column; gap: 40px; }
+  .slide h1 { margin: 0; font-size: 96px; line-height: 1.05; }
+  .slide h2 { margin: 0; font-size: 64px; line-height: 1.1; }
+  .slide p { margin: 0; max-width: 28ch; }
+  .num { position: absolute; right: 64px; bottom: 48px; font: 24px/1 system-ui, sans-serif; color: var(--muted); }
+  .edge { position: fixed; top: 0; bottom: 0; width: 18%; z-index: 1; cursor: pointer; background: none; border: 0; }
+  .edge.prev { left: 0; } .edge.next { right: 0; }
+  @media print {
+    html, body { height: auto; overflow: visible; background: none; }
+    .stage { position: static; display: block; }
+    .deck { position: static; transform: none !important; height: auto; }
+    .slide { position: relative; display: flex !important; flex-direction: column; gap: 40px; width: 1920px; height: 1080px; break-after: page; }
+    .num, .edge { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="deck" id="deck">
+      <section class="slide" id="s1" data-screen-label="01 Cover"><h1>[Heading]</h1><p>[Subheading]</p></section>
+      <section class="slide" id="s2" data-screen-label="02 Idea"><h2>[One idea per slide]</h2></section>
+    </div>
+  </div>
+  <button class="edge prev" aria-label="Previous slide"></button>
+  <button class="edge next" aria-label="Next slide"></button>
+  <script>
+    (() => {
+      const deck = document.getElementById('deck');
+      const slides = [...deck.querySelectorAll('.slide')];
+      const num = document.createElement('div');
+      num.className = 'num';
+      deck.append(num);
+      const fit = () => {
+        const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+        deck.style.transform = `translate(-50%, -50%) scale(${k})`;
+      };
+      const show = (i) => {
+        i = Math.max(1, Math.min(slides.length, i | 0 || 1));
+        slides.forEach((s, j) => s.classList.toggle('on', j === i - 1));
+        num.textContent = `${i} / ${slides.length}`;
+        if (location.hash !== `#${i}`) history.replaceState(null, '', `#${i}`);
+        return i;
+      };
+      let cur = show(parseInt(location.hash.slice(1), 10));
+      const go = (d) => { cur = show(cur + d); };
+      addEventListener('keydown', (e) => {
+        if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(1); }
+        if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); go(-1); }
+      });
+      document.querySelector('.edge.prev').onclick = () => go(-1);
+      document.querySelector('.edge.next').onclick = () => go(1);
+      addEventListener('hashchange', () => { cur = show(parseInt(location.hash.slice(1), 10)); });
+      addEventListener('resize', fit);
+      fit();
+    })();
+  </script>
+</body>
+</html>

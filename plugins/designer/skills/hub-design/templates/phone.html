@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- Template: a 390×844 phone frame. The screen goes inside .screen; the class android on .phone gives the Android variant. -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone</title>
+<style>
+  :root { --bezel: #111; --screen-bg: #fff; --ink: #111; }
+  body { margin: 0; padding: 48px 24px; display: grid; justify-items: center; gap: 24px; background: #e9e9ec; font: 16px/1.4 system-ui, sans-serif; }
+  .phone { width: 390px; height: 844px; padding: 12px; border-radius: 56px; background: var(--bezel); box-shadow: 0 0 0 2px #2b2b2e inset; box-sizing: content-box; }
+  .screen { position: relative; width: 100%; height: 100%; border-radius: 44px; overflow: hidden; background: var(--screen-bg); color: var(--ink); display: flex; flex-direction: column; }
+  .status { flex: none; height: 54px; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 15px; }
+  .phone:not(.android) .status::after { content: ""; position: absolute; top: 11px; left: 50%; width: 124px; height: 36px; margin-left: -62px; border-radius: 18px; background: #000; }
+  .phone.android { border-radius: 40px; }
+  .phone.android .screen { border-radius: 30px; }
+  .phone.android .status { height: 40px; padding: 0 20px; font-size: 13px; }
+  .phone.android .status::after { content: ""; position: absolute; top: 12px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #000; }
+  .content { flex: 1; overflow: auto; }
+  .home { flex: none; height: 34px; display: grid; place-items: center; }
+  .home::before { content: ""; width: 134px; height: 5px; border-radius: 3px; background: currentColor; opacity: .85; }
+  .phone.android .home { height: 24px; }
+  .phone.android .home::before { width: 108px; height: 4px; }
+  .caption { color: #555; font-size: 14px; }
+</style>
+</head>
+<body>
+  <div class="phone" id="phone-1" data-screen-label="01 Home screen">
+    <div class="screen">
+      <div class="status"><span>9:41</span><span aria-hidden="true">▂▄▆ 100%</span></div>
+      <main class="content" id="screen-1">
+        <!-- screen -->
+      </main>
+      <div class="home" aria-hidden="true"></div>
+    </div>
+  </div>
+  <p class="caption">01 Home screen</p>
+</body>
+</html>
